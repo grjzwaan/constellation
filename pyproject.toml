@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "constellation"
+version = "0.1.0"
+description = "Constellation is a thing"
+authors = ["Ruben"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+httpx = "0.23.3"
+aiostream = "0.4.5"
+
+[tool.poetry.group.dev.dependencies]
+rich = "13.3.1"
+
+[tool.poetry.group.duckdb]
+optional = true
+
+[tool.poetry.group.duckdb.dependencies]
+duckdb = "0.6.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

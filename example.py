@@ -1,16 +1,3 @@
-# Constellation
-Constellation is a personal project to automate stuff in my house. The goal is that the source should be _simple_ and
-_explicit_.
-
-## Collect measurements
-The idea is to have a single Python script that describes your devices and how you want to collect it. Then, wire it
-to a processor for storage.
-
-In this project I've made initial versions for Shelly Plug S and Slimmelezer. The main work is done with async generators
-using the library `aiostreams`
-
-This leads to a very simple, yet explicit script:
-```python
 import asyncio
 import logging
 from rich.logging import RichHandler
@@ -57,16 +44,3 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt as e:
         pass
-
-```
-
-Building a custom collector is quite easy. If you simply target a different endpoint and get a different JSON, just
-copy-paste the `ShellyPlugSCollector` and rewrite the JSON-parsing. 
-
-@TODO: Add some examples.
-
-## Processor
-I've added a simple DuckDB processor. It attemps to generate a table to store the measurements. For this you 
-need to know the tags in advance as it'll create a column for each.
-
-DuckDB does not yet support categorical columns but intends to do this. Then this approach is simple and performant.
